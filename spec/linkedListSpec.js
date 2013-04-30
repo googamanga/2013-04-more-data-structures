@@ -66,5 +66,21 @@ describe("linkedList", function() {
     expect(linkedList.head).toEqual(null);
     expect(linkedList.tail).toEqual(null);
   });
-  // add more tests here to test the functionality of linkedList
+
+  it("should recover after error on removeHead() on empty list", function() {
+    var shouldThrow = function(){
+      linkedList.removeHead(); // may need to return if throw doesn't propogate
+    };
+    linkedList.addToTail('string1');
+    linkedList.addToTail('string2');
+    linkedList.removeHead();
+    linkedList.removeHead();
+    expect(shouldThrow).toThrow();
+
+    linkedList.addToTail('string1');
+    linkedList.addToTail('string2');
+    expect(linkedList.removeHead()).toEqual('string1');
+    expect(linkedList.removeHead()).toEqual('string2');
+    expect(shouldThrow).toThrow();
+  });
 });
