@@ -16,5 +16,11 @@ describe("linkedList", function() {
     expect(linkedList.contains).toEqual(jasmine.any(Function));
   });
 
+  it("should populate head and tail on .addToTail", function() {
+    linkedList.addToTail('A testing string');
+    expect(linkedList.head.value).toEqual('A testing string');
+    expect(linkedList.tail.value).toEqual('A testing string');
+  });
+
   // add more tests here to test the functionality of linkedList
 });
