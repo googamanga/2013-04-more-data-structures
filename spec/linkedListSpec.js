@@ -53,5 +53,18 @@ describe("linkedList", function() {
     expect(linkedList.removeHead()).toEqual('string3');
   });
 
+  it(".removeHead() should throw an error when the list is empty", function() {
+    var shouldThrow = function(){
+      linkedList.removeHead(); // may need to return if throw doesn't propogate
+    };
+    expect(shouldThrow).toThrow();
+  });
+
+  it("head and tail should be null when the last node is removed", function() {
+    linkedList.addToTail('string1');
+    linkedList.removeHead();
+    expect(linkedList.head).toEqual(null);
+    expect(linkedList.tail).toEqual(null);
+  });
   // add more tests here to test the functionality of linkedList
 });

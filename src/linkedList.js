@@ -16,8 +16,18 @@ var makeLinkedList = function(){
   };
 
   newLinkedList.removeHead = function(){
+    if (!newLinkedList.head) {
+      throw "Cannot remove node from an empty list";
+    }
     var node = newLinkedList.head;
-    newLinkedList.head = node.next;
+    if (newLinkedList.head === newLinkedList.tail) {
+      // there is only one item in the list
+      newLinkedList.head = null;
+      newLinkedList.tail = null;
+    } else {
+      // there are multiple items in the list
+      newLinkedList.head = node.next;
+    }
     return node.value;
   };
 
