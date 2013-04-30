@@ -5,11 +5,14 @@ var makeLinkedList = function(){
 
   newLinkedList.addToTail = function(value){
     var newNode = makeNode(value);
-    newLinkedList.tail = newNode;
     if (newLinkedList.head === null) {
       newLinkedList.head = newNode;
+    } else {
+      //list is not empty
+      newLinkedList.tail.next = newNode;
     }
-    return newLinkedList;
+    newLinkedList.tail = newNode;
+    return value;
   };
 
   newLinkedList.removeHead = function(){
