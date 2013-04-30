@@ -30,5 +30,19 @@ describe("linkedList", function() {
     expect(linkedList.head.value).toEqual('string1');
   });
 
+  it(".contains(value) should return true if value is in the linkedList", function() {
+    linkedList.addToTail('string1');
+    linkedList.addToTail('string2');
+    linkedList.addToTail('string3');
+    expect(linkedList.contains('string2')).toEqual(true);
+  });
+
+  it(".contains(value) should return false if value is not in the linkedList", function() {
+    linkedList.addToTail('string1');
+    linkedList.addToTail('string2');
+    linkedList.addToTail('string3');
+    expect(linkedList.contains('asdf;l')).toEqual(false);
+  });
+
   // add more tests here to test the functionality of linkedList
 });

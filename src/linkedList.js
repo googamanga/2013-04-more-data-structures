@@ -18,7 +18,13 @@ var makeLinkedList = function(){
   newLinkedList.removeHead = function(){
   };
 
-  newLinkedList.contains = function(){
+  newLinkedList.contains = function(value){
+    var walker = newLinkedList.head;
+    while (walker.next !== null) {
+      if (walker.value === value) return true;
+      walker = walker.next;
+    }
+    return false;
   };
 
   return newLinkedList;
