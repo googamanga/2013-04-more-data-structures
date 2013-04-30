@@ -44,5 +44,14 @@ describe("linkedList", function() {
     expect(linkedList.contains('asdf;l')).toEqual(false);
   });
 
+  it(".removeHead() should return values in the FIFO order they were added", function() {
+    linkedList.addToTail('string1');
+    linkedList.addToTail('string2');
+    linkedList.addToTail('string3');
+    expect(linkedList.removeHead()).toEqual('string1');
+    expect(linkedList.removeHead()).toEqual('string2');
+    expect(linkedList.removeHead()).toEqual('string3');
+  });
+
   // add more tests here to test the functionality of linkedList
 });

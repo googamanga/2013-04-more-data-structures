@@ -16,6 +16,9 @@ var makeLinkedList = function(){
   };
 
   newLinkedList.removeHead = function(){
+    var node = newLinkedList.head;
+    newLinkedList.head = node.next;
+    return node.value;
   };
 
   newLinkedList.contains = function(value){
