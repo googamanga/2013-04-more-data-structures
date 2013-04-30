@@ -22,5 +22,13 @@ describe("linkedList", function() {
     expect(linkedList.tail.value).toEqual('A testing string');
   });
 
+  it("should add nodes consecutively", function() {
+    linkedList.addToTail('string1');
+    linkedList.addToTail('string2');
+    linkedList.addToTail('string3');
+    expect(linkedList.tail.value).toEqual('string3');
+    expect(linkedList.head.value).toEqual('string1');
+  });
+
   // add more tests here to test the functionality of linkedList
 });
