@@ -16,8 +16,12 @@ describe("tree", function() {
   });
 
   it(".contains() should return true if the value does exist in the tree", function(){
-    tree.addChild('string');
-    expect(tree.contains('string')).toBe(true);
+    tree.addChild('1a').addChild('2a');
+    tree.addChild('1b').addChild('2b');
+    expect(tree.contains('2a')).toBe(true);
+    expect(tree.contains('2b')).toBe(true);
+    expect(tree.contains('2a')).toBe(true);
+    expect(tree.contains('2b')).toBe(true);
   });
 
   // Add more tests here to test the functionality of tree.

@@ -16,10 +16,11 @@ treeMethods.addChild = function(value){
 };
 
 treeMethods.contains = function(value){
-  for(var i = 0; i < this.children.length; i++){
-    if(this.children[i].value === value) {
+  if(this.value === value) {
       return true;
-    }
+  }
+  for(var i = 0; i < this.children.length; i++){
+    if (this.children[i].contains(value)) return true;
   }
   return false;
 };
