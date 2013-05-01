@@ -32,5 +32,11 @@ describe("hashTable", function() {
       expect(hashTable.retrieve('Cat')).toEqual('Upper case Cat');
       expect(hashTable.retrieve('cat')).toEqual('lower case cat');
     });
+
+    it("Retrieve should return undefined when table does not contain key", function() {
+      expect(hashTable.retrieve('adsf')).toEqual(undefined);
+      hashTable.insert('Cat', 'Upper case Cat');
+      expect(hashTable.retrieve('cat')).toEqual(undefined);
+    });
   });
 });
