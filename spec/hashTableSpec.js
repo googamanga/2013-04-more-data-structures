@@ -39,4 +39,13 @@ describe("hashTable", function() {
       expect(hashTable.retrieve('cat')).toEqual(undefined);
     });
   });
+
+  describe("remove", function() {
+    it("should remove key value pair", function() {
+      hashTable.insert('Cat', 'Upper case Cat');
+      expect(hashTable.remove('Cat')).toEqual('Upper case Cat');
+      expect(hashTable.retrieve('Cat')).toEqual(undefined);
+      expect(hashTable.remove('Cat')).toEqual(undefined);
+    });
+  });
 });
