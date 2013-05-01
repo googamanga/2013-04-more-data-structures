@@ -14,13 +14,14 @@ describe("hashTable", function() {
     expect(getIndexBelowMaxForKey('Dog', hashTable._limit)).toBeLessThan(hashTable._limit);
   });
 
-  describe("insert", function() {
-    it("should insert string into _storage using tuple", function() {
+  describe("insert and retrieve", function() {
+    it("should return inserted values when no collisions", function() {
       var key = 'Cat';
-      var index = getIndexBelowMaxForKey(key, hashTable._limit);
       hashTable.insert(key, 'Friendly');
-      expect(hashTable._storage.get(index)[0][0]).toEqual('Cat');
-      expect(hashTable._storage.get(index)[0][1]).toEqual('Friendly');
+      expect(hashTable.retrieve(key)).toEqual('Friendly');
+      key = 'Dog';
+      hashTable.insert(key, 'Loud');
+      expect(hashTable.retrieve(key)).toEqual('Loud');
     });
 
     it("should handle collisions", function() {
@@ -28,19 +29,8 @@ describe("hashTable", function() {
       hashTable.insert('cat', 'lower case cat');
       expect(getIndexBelowMaxForKey('Cat', hashTable._limit)).toEqual(
         getIndexBelowMaxForKey('cat', hashTable._limit));
-      expect(hashTable._storage.get(getIndexBelowMaxForKey('Cat', hashTable._limit))[0]).toEqual(
-        ['Cat', 'Upper case Cat']);
-    });
-  });
-
-  describe("retrieve", function() {
-    it(".retrieve should returns inserted values when no collisions", function() {
-      var key = 'Cat';
-      hashTable.insert(key, 'Friendly');
-      expect(hashTable.retrieve(key)).toEqual('Friendly');
-      key = 'Dog';
-      hashTable.insert(key, 'Loud');
-      expect(hashTable.retrieve(key)).toEqual('Loud');
+      expect(hashTable.retrieve('Cat')).toEqual('Upper case Cat');
+      expect(hashTable.retrieve('cat')).toEqual('lower case cat');
     });
   });
 });
