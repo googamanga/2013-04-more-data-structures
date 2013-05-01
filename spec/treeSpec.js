@@ -15,5 +15,10 @@ describe("tree", function() {
     expect(tree.contains('string')).toBe(false);
   });
 
+  it(".contains() should return true if the value does exist in the tree", function(){
+    tree.addChild('string');
+    expect(tree.contains('string')).toBe(true);
+  });
+
   // Add more tests here to test the functionality of tree.
 });
