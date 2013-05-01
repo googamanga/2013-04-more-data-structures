@@ -26,7 +26,7 @@ HashTable.prototype.insert = function(key, value){
   //
   // A new tuple is NOT being created.
   var tuples = this._storage.get(index);
-  for (var i = 0; i > tuples.length; i++) {
+  for (var i = 0; i < tuples.length; i++) {
     if (tuples[i][0] === key) {
       tuples[i][1] = value;
       return value;
@@ -40,7 +40,14 @@ HashTable.prototype.insert = function(key, value){
 };
 
 HashTable.prototype.retrieve = function(key){
-  return this._storage[getIndexBelowMaxForKey(key,this._limit)];
+  var index = getIndexBelowMaxForKey(key, this._limit);
+  var tuples = this._storage.get(index);
+  for (var i = 0; i < tuples.length; i++) {
+    if (tuples[i][0] === key) {
+      return tuples[i][1];
+    }
+  }
+  return undefined;
 };
 
 HashTable.prototype.remove = function(){
