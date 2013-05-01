@@ -16,5 +16,11 @@ describe("set", function() {
       set.add('Dog');
       expect(set.contains('Dog')).toEqual(true);
     });
+
+    it("Should return false for values not in set", function() {
+      expect(set.contains('Dog')).toEqual(false);
+      set.add('Cat');
+      expect(set.contains('Froggy')).toEqual(false);
+    });
   });
 });
