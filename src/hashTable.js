@@ -10,7 +10,10 @@ var HashTable = function(){
   this._storage = makeLimitedArray(this._limit);
 };
 
-HashTable.prototype.insert = function(){
+HashTable.prototype.insert = function(key, value){
+  var index = getIndexBelowMaxForKey(key, this._limit);
+  this._storage[index] = value;
+  return this._storage[index];
 };
 
 HashTable.prototype.retrieve = function(){

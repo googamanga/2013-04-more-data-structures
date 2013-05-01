@@ -14,5 +14,12 @@ describe("hashTable", function() {
     expect(getIndexBelowMaxForKey('Dog', hashTable._limit)).toBeLessThan(hashTable._limit);
   });
 
+  it(".insert should insert string into _storage", function() {
+    var key = 'Cat';
+    var index = getIndexBelowMaxForKey(key, hashTable._limit);
+    hashTable.insert(key, 'Friendly');
+    expect(hashTable._storage[index]).toEqual('Friendly');
+  });
+
   // add more tests here to test the functionality of hashTable
 });
