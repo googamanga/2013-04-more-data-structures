@@ -11,5 +11,9 @@ describe("tree", function() {
     expect('value' in tree).toBe(true);
   });
 
+  it(".contains() should return false if the value does not exist in the tree", function(){
+    expect(tree.contains('string')).toBe(false);
+  });
+
   // Add more tests here to test the functionality of tree.
 });
