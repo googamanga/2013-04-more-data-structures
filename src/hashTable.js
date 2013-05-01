@@ -16,7 +16,8 @@ HashTable.prototype.insert = function(key, value){
   return this._storage[index];
 };
 
-HashTable.prototype.retrieve = function(){
+HashTable.prototype.retrieve = function(key){
+  return this._storage[getIndexBelowMaxForKey(key,this._limit)];
 };
 
 HashTable.prototype.remove = function(){

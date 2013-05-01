@@ -21,5 +21,14 @@ describe("hashTable", function() {
     expect(hashTable._storage[index]).toEqual('Friendly');
   });
 
+  it(".retrieve should returns inserted values when no collisions", function() {
+    var key = 'Cat';
+    hashTable.insert(key, 'Friendly');
+    expect(hashTable.retrieve(key)).toEqual('Friendly');
+    key = 'Dog';
+    hashTable.insert(key, 'Loud');
+    expect(hashTable.retrieve(key)).toEqual('Loud');
+  });
+
   // add more tests here to test the functionality of hashTable
 });
