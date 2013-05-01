@@ -23,4 +23,19 @@ describe("set", function() {
       expect(set.contains('Froggy')).toEqual(false);
     });
   });
+
+  describe("remove", function() {
+    it("should remove values that have been added", function(){
+      set.add('Dog');
+      expect(set.remove('Dog')).toEqual('Dog');
+      expect(set.contains('Dog')).toEqual(false);
+    });
+
+    it("should return undefined when removing non-existant values", function() {
+      expect(set.remove('Dog')).toEqual(undefined);
+      set.add('Cat');
+      expect(set.remove('Beaver')).toEqual(undefined);
+    });
+  });
+
 });

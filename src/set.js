@@ -19,5 +19,9 @@ setPrototype.contains = function(value){
   return false;
 };
 
-setPrototype.remove = function(){
+setPrototype.remove = function(value){
+  for (var i = 0; i < this._storage.length; i++) {
+    if (this._storage[i] === value) break;
+  }
+  return (i === this._storage.length) ? undefined : this._storage.splice(i, 1)[0];
 };
