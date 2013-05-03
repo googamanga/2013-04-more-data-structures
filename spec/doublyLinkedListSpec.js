@@ -15,11 +15,18 @@ describe("linkedList", function() {
     expect(linkedList.removeHead).toEqual(jasmine.any(Function));
     expect(linkedList.contains).toEqual(jasmine.any(Function));
   });
+
   describe("linkedList", function() {
     it("should populate head and tail on .addToTail", function() {
       linkedList.addToTail('A testing string');
       expect(linkedList.head.value).toEqual('A testing string');
       expect(linkedList.tail.value).toEqual('A testing string');
+    });
+
+    it(".addToHead should add a new node on the head", function() {
+      linkedList.addToTail('added to tail');
+      linkedList.addToHead('added to head');
+      expect(linkedList.contains('added to tail')).toEqual(true);
     });
 
     it("should populate head and tail on .addToTail", function() {
@@ -41,6 +48,7 @@ describe("linkedList", function() {
       linkedList.addToTail('string2');
       linkedList.addToTail('string3');
       expect(linkedList.contains('string2')).toEqual(true);
+      expect(linkedList.contains('string3')).toEqual(true);
     });
 
     it(".contains(value) should return false if value is not in the linkedList", function() {

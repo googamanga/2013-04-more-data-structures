@@ -15,9 +15,23 @@ var makeLinkedList = function(){
     return value;
   };
 
+  newLinkedList.addToHead = function(value){
+    var newNode = makeNode(value);
+    if (newLinkedList.head === null) {
+      // list is empty
+      newLinkedList.tail = newNode;
+    } else {
+      //list is not empty
+      newLinkedList.head.previous = newNode;
+      newNode.next = newLinkedList.head;
+    }
+    newLinkedList.head = newNode;
+    return value;
+  };
+
   newLinkedList.removeHead = function(){
     if (!newLinkedList.head) {
-      throw "Cannot remove node from an empty list";
+      throw new Error("Cannot remove node from an empty list");
     }
     var node = newLinkedList.head;
     if (newLinkedList.head === newLinkedList.tail) {
@@ -33,10 +47,10 @@ var makeLinkedList = function(){
 
   newLinkedList.contains = function(value){
     var walker = newLinkedList.head;
-    while (walker.next !== null) {
+    do {
       if (walker.value === value) return true;
       walker = walker.next;
-    }
+    } while (walker !== null);
     return false;
   };
 
