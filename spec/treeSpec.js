@@ -24,5 +24,25 @@ describe("tree", function() {
     expect(tree.contains('2b')).toBe(true);
   });
 
-  // Add more tests here to test the functionality of tree.
+  it(".detachFromParent should return detached child when parent exists", function(){
+    tree.addChild('1a').addChild('2a');
+    var twoBTree = tree.addChild('1b').addChild('2b');
+    expect(twoBTree.detachFromParent()).toBe(twoBTree);
+    expect(tree.contains('2b')).toBe(false);
+  });
+
+  it(".detachFromParent should return detached child when NO parent exists", function(){
+    tree.addChild('1a').addChild('2a');
+    var twoBTree = tree.addChild('1b').addChild('2b');
+    expect(twoBTree.detachFromParent()).toBe(twoBTree);
+    expect(twoBTree.detachFromParent()).toBe(twoBTree);
+  });
+
+  it(".detachFromParent should remove all child trees", function(){
+    tree.addChild('1a').addChild('2a');
+    var oneBTree = tree.addChild('1b');
+    var twoBTree = oneBTree.addChild('2b');
+    expect(oneBTree.detachFromParent()).toBe(oneBTree);
+    expect(tree.contains('2b')).toBe(false);
+  });
 });
