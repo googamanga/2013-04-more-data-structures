@@ -47,6 +47,7 @@ var makeNode = function(value){
   var newNode = {};
   newNode.value = value;
   newNode.next = null;
+  newNode.previous = null;
 
   newNode.removeNextNode = function(){
   };

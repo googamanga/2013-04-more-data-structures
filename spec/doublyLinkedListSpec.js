@@ -15,33 +15,40 @@ describe("linkedList", function() {
     expect(linkedList.removeHead).toEqual(jasmine.any(Function));
     expect(linkedList.contains).toEqual(jasmine.any(Function));
   });
+  describe("linkedList", function() {
+    it("should populate head and tail on .addToTail", function() {
+      linkedList.addToTail('A testing string');
+      expect(linkedList.head.value).toEqual('A testing string');
+      expect(linkedList.tail.value).toEqual('A testing string');
+    });
 
-  it("should populate head and tail on .addToTail", function() {
-    linkedList.addToTail('A testing string');
-    expect(linkedList.head.value).toEqual('A testing string');
-    expect(linkedList.tail.value).toEqual('A testing string');
-  });
+    it("should populate head and tail on .addToTail", function() {
+      linkedList.addToTail('A testing string');
+      expect(linkedList.head.value).toEqual('A testing string');
+      expect(linkedList.tail.value).toEqual('A testing string');
+    });
 
-  it("should add nodes consecutively", function() {
-    linkedList.addToTail('string1');
-    linkedList.addToTail('string2');
-    linkedList.addToTail('string3');
-    expect(linkedList.tail.value).toEqual('string3');
-    expect(linkedList.head.value).toEqual('string1');
-  });
+    it("should add nodes consecutively", function() {
+      linkedList.addToTail('string1');
+      linkedList.addToTail('string2');
+      linkedList.addToTail('string3');
+      expect(linkedList.tail.value).toEqual('string3');
+      expect(linkedList.head.value).toEqual('string1');
+    });
 
-  it(".contains(value) should return true if value is in the linkedList", function() {
-    linkedList.addToTail('string1');
-    linkedList.addToTail('string2');
-    linkedList.addToTail('string3');
-    expect(linkedList.contains('string2')).toEqual(true);
-  });
+    it(".contains(value) should return true if value is in the linkedList", function() {
+      linkedList.addToTail('string1');
+      linkedList.addToTail('string2');
+      linkedList.addToTail('string3');
+      expect(linkedList.contains('string2')).toEqual(true);
+    });
 
-  it(".contains(value) should return false if value is not in the linkedList", function() {
-    linkedList.addToTail('string1');
-    linkedList.addToTail('string2');
-    linkedList.addToTail('string3');
-    expect(linkedList.contains('asdf;l')).toEqual(false);
+    it(".contains(value) should return false if value is not in the linkedList", function() {
+      linkedList.addToTail('string1');
+      linkedList.addToTail('string2');
+      linkedList.addToTail('string3');
+      expect(linkedList.contains('asdf;l')).toEqual(false);
+    });
   });
 
   it(".removeHead() should return values in the FIFO order they were added", function() {
