@@ -23,6 +23,20 @@ describe("linkedList", function() {
       expect(linkedList.tail.value).toEqual('A testing string');
     });
 
+    it(".removeTail should set the linkedList tail to the current tial.previous", function() {
+      linkedList.addToTail('added to tail');
+      linkedList.addToHead('in the middle');
+      linkedList.addToHead('added to head');
+      expect(linkedList.contains('added to tail')).toEqual(true);
+      expect(linkedList.contains('in the middle')).toEqual(true);
+      expect(linkedList.contains('added to head')).toEqual(true);
+      expect(linkedList.head.value).toEqual('added to head');
+      expect(linkedList.tail.value).toEqual('added to tail');
+      expect(linkedList.removeTail()).toEqual('added to tail');
+      expect(linkedList.contains('added to tail')).toEqual(false);
+      expect(linkedList.tail.value).toEqual('in the middle');
+    });
+
     it(".addToHead should add a new node on the head", function() {
       linkedList.addToTail('added to tail');
       linkedList.addToHead('added to head');

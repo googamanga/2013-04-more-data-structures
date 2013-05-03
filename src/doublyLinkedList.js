@@ -10,6 +10,7 @@ var makeLinkedList = function(){
     } else {
       //list is not empty
       newLinkedList.tail.next = newNode;
+      newNode.previous = newLinkedList.tail;
     }
     newLinkedList.tail = newNode;
     return value;
@@ -41,6 +42,24 @@ var makeLinkedList = function(){
     } else {
       // there are multiple items in the list
       newLinkedList.head = node.next;
+      newLinkedList.head.previous = null;
+    }
+    return node.value;
+  };
+
+  newLinkedList.removeTail = function(){
+    if (!newLinkedList.tail) {
+      throw new Error("Cannot remove node from an empty list");
+    }
+    var node = newLinkedList.tail;
+    if (newLinkedList.head === newLinkedList.tail) {
+      // there is only one item in the list
+      newLinkedList.head = null;
+      newLinkedList.tail = null;
+    } else {
+      // there are multiple items in the list
+      newLinkedList.tail = node.previous;
+      newLinkedList.tail.next = null;
     }
     return node.value;
   };
