@@ -12,8 +12,8 @@ var makeBinarySearchTree = function(value){
     value: value,
     left: null,
     right: null,
-    insert: function(){
-
+    insert: function(value){
+      if( typeof value !== 'number') throw new Error("should input a number");
     },
     contains: function(){
 

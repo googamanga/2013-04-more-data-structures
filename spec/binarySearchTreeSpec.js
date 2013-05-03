@@ -10,5 +10,10 @@ describe("binarySearchTree", function() {
     expect(binarySearchTree.contains).toEqual(jasmine.any(Function));
     expect(binarySearchTree.depthFirstLog).toEqual(jasmine.any(Function));
   });
-  // add more tests here to test the functionality of binarySearchTree
+
+  describe(".insert", function() {
+    it("should fail if called without a number", function() {
+      expect(function(){binarySearchTree.insert('asdf');}).toThrow( new Error("should input a number"));
+    });
+  });
 });
