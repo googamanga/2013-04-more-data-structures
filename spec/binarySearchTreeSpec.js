@@ -81,9 +81,9 @@ describe("binarySearchTree", function() {
       binarySearchTree.insert(8);
       binarySearchTree.insert(3);
       binarySearchTree.insert(4);
-      expect(binarySearchTree.mapDepthFirstLogTwo(function(value){
-        return ""+value+value;
-      })).toEqual(["55","33", "44", "88"]);
+      expect(binarySearchTree.mapDepthFirstLogTwo(function(value, value2){
+        return ""+value+value2;
+      },9)).toEqual(["59","39", "49","89"]);
     });
   });
 

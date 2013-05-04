@@ -38,14 +38,14 @@ var makeBinarySearchTree = function(){
       return results;
     },
     mapDepthFirstLogTwo: function(callback){
-      var that = this;
       var args = Array.prototype.slice.call(arguments, 1);
       results = [];
-      var recursive = function() {
-        if (that.value) results.push(callback(this.value));
-        if (that.left) recursive.apply(that.left, args);
-        if (that.right) recursive.apply(that.right, args);
+      var recursive = function(tree) {
+        if (tree.value) results.push(callback.apply(this, [tree.value].concat(args) ));
+        if (tree.left) recursive(tree.left);
+        if (tree.right) recursive(tree.right);
       };
+      recursive(this);
       return results;
     }
   };
