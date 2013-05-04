@@ -74,4 +74,17 @@ describe("binarySearchTree", function() {
       })).toEqual(["55","33", "44", "88"]);
     });
   });
+
+  describe(".mapDepthFirstLogTwo", function() {
+    it("should call callback on every value depth first", function() {
+      binarySearchTree.insert(5);
+      binarySearchTree.insert(8);
+      binarySearchTree.insert(3);
+      binarySearchTree.insert(4);
+      expect(binarySearchTree.mapDepthFirstLogTwo(function(value){
+        return ""+value+value;
+      })).toEqual(["55","33", "44", "88"]);
+    });
+  });
+
 });

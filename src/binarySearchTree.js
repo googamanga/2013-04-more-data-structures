@@ -36,6 +36,17 @@ var makeBinarySearchTree = function(){
       if (this.left) this.left.mapDepthFirstLog(callback, results);
       if (this.right) this.right.mapDepthFirstLog(callback, results);
       return results;
+    },
+    mapDepthFirstLogTwo: function(callback){
+      var that = this;
+      var args = Array.prototype.slice.call(arguments, 1);
+      results = [];
+      var recursive = function() {
+        if (that.value) results.push(callback(this.value));
+        if (that.left) recursive.apply(that.left, args);
+        if (that.right) recursive.apply(that.right, args);
+      };
+      return results;
     }
   };
   return newTree;
