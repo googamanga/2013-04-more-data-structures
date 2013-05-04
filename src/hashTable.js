@@ -12,14 +12,10 @@ var HashTable = function(){
 
 HashTable.prototype.insert = function(key, value){
   var index = getIndexBelowMaxForKey(key, this._limit);
-  // Check if storage.index is already populated
-  //
-  // if not populated, just continue
 
-  if (!this._storage.get(index)) {
-    // the storage location is empty
-    this._storage.set(index, []);
-  }
+  // Check if storage.index is already populated
+  // if not populated, just continue
+  if (!this._storage.get(index)) this._storage.set(index, []);
 
   // Handle case when key already exists in hashtable
   // and value needs to be updated for that key
