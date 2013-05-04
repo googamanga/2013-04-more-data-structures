@@ -41,7 +41,7 @@ var makeBinarySearchTree = function(){
       var args = Array.prototype.slice.call(arguments, 1);
       results = [];
       var recursive = function(tree) {
-        if (tree.value) results.push(callback.apply(this, [tree.value].concat(args) ));
+        if (tree.value) results.push(callback.apply(window, [tree.value].concat(args) ));
         if (tree.left) recursive(tree.left);
         if (tree.right) recursive(tree.right);
       };
